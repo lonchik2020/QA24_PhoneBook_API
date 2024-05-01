@@ -15,6 +15,7 @@ public class LoginTestsOkhttp {
     Gson gson = new Gson();
     //server works with json(Gson = library which turns objects of java to json and json to objects of java)
     public static final MediaType JSON = MediaType.get("application/json;charset=utf-8");
+    //media type - explains what there is in the body
     OkHttpClient client = new OkHttpClient();//object to send the request
 
     @Test

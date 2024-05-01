@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class GetAllContactsTestsOkhttp {
-    String token = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoia3Jhc2xlb0BnbWFpbC5jb20iLCJpc3MiOiJSZWd1bGFpdCIsImV4cCI6MTcxNDMxOTM4NiwiaWF0IjoxNzEzNzE5Mzg2fQ.r_4ZqVBdTFyBKT0n7osoF3valAwTnj65kk2tqW3lQ-U";
+    String token = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoia3Jhc2xlb0BnbWFpbC5jb20iLCJpc3MiOiJSZWd1bGFpdCIsImV4cCI6MTcxNTE3NzUyNywiaWF0IjoxNzE0NTc3NTI3fQ.5c9CcX3j_gnnT6dBnd7iDl0iIeqRdlD7goBdS0kT2Vc";
     //token --> parameter of authorization
     Gson gson = new Gson();
     //because in the response there are json
@@ -26,7 +26,7 @@ public class GetAllContactsTestsOkhttp {
         Request request = new Request.Builder()
                 .url("https://contactapp-telran-backend.herokuapp.com/v1/contacts")
                 .get()
-                .addHeader("Authorization", token)
+                .addHeader("Authorization", token)//key,meaning
                 .build();
         Response response = client.newCall(request).execute();
         Assert.assertTrue(response.isSuccessful());

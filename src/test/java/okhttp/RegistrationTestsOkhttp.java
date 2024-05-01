@@ -50,7 +50,6 @@ public class RegistrationTestsOkhttp {
         Assert.assertFalse(response.isSuccessful());
         Assert.assertEquals(response.code(), 400);
         ErrorDTO errorDTO = gson.fromJson(response.body().string(), ErrorDTO.class);
-
     }
 
     @Test
@@ -67,7 +66,6 @@ public class RegistrationTestsOkhttp {
         Assert.assertFalse(response.isSuccessful());
         Assert.assertEquals(response.code(), 400);
         ErrorDTO errorDTO = gson.fromJson(response.body().string(), ErrorDTO.class);
-
     }
 
     @Test
@@ -84,8 +82,5 @@ public class RegistrationTestsOkhttp {
         Assert.assertFalse(response.isSuccessful());
         Assert.assertEquals(response.code(), 409);
         ErrorDTO errorDTO = gson.fromJson(response.body().string(), ErrorDTO.class);
-
     }
-
-
 }
