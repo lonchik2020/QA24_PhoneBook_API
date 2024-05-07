@@ -27,7 +27,7 @@ public class DeleteContactByIDOkhttp {
     public void preCondition() throws IOException {
         //create contact
         int i = new Random().nextInt(1000)+1000;
-        Random random = new Random();
+        //Random random = new Random();
         ContactDTO contactDTO = ContactDTO.builder()
                 .name("Maya")
                 .lastName("Dow")
@@ -48,7 +48,7 @@ public class DeleteContactByIDOkhttp {
         String message = messageDTO.getMessage();
         //get id from "message"
         String[] all = message.split(": ");
-        //id
+        // variable id to put there the id from the message
          id = all[1];
 
     }

@@ -72,4 +72,23 @@ public class RegistrationTestsRA {
                 .assertThat().statusCode(409)
                 .assertThat().body("message",containsString("User already exists"));
     }
+
+
+    @Test
+    public void registrationWrongPassword(){
+        AuthRequestDTO auth = AuthRequestDTO.builder()
+                .username("krasleo@gmail.com")
+                .password("Cristian7777")
+                .build();
+
+        given()
+                .body(auth)
+                .contentType(ContentType.JSON)
+                .when()
+                .post(endpoint)
+                .then()
+                .assertThat().statusCode(400)
+                .assertThat().body("message.password"
+                        ,containsString(" At least 8 characters; Must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number"));
+    }
 }

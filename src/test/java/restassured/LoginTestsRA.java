@@ -19,8 +19,9 @@ import static org.hamcrest.Matchers.equalTo;
 public class LoginTestsRA {
     String endpoint = "user/login/usernamepassword";
     @BeforeMethod
-    public void preCondition(){
+    public void preCondition(){// to have base url every time
         RestAssured.baseURI = "https://contactapp-telran-backend.herokuapp.com";
+        //base path - a part that common for all the end points
         RestAssured.basePath = "v1";
     }
 
@@ -81,8 +82,44 @@ public class LoginTestsRA {
                 .assertThat().statusCode(401)
                 .assertThat().body("message",containsString("Login or Password incorrect"))
               .assertThat().body("path",equalTo("/v1/user/login/usernamepassword"));
-
     }
 
+    @Test
+    public void loginWrongPassword() {
+        AuthRequestDTO auth = AuthRequestDTO.builder()
+                .username("krasleo@gmail.com")
+                .password("Cristiano7777")
+                .build();
+
+        ErrorDTO errorDTO = given()
+                .body(auth)
+                .contentType(ContentType.JSON)
+                .when()
+                .post(endpoint)
+                .then()
+                .assertThat().statusCode(401)
+                .extract()
+                .response()
+                .as(ErrorDTO.class);
+        Assert.assertEquals(errorDTO.getMessage(), "Login or Password incorrect");
+    }
+
+    @Test
+    public void loginWrongPasswordFormat(){
+        AuthRequestDTO auth = AuthRequestDTO.builder()
+                .username("krasleo@gmail.com")
+                .password("Cristiano7777")
+                .build();
+
+        given()
+                .body(auth)
+                .contentType(ContentType.JSON)
+                .when()
+                .post(endpoint)
+                .then()
+                .assertThat().statusCode(401)
+                .assertThat().body("message",containsString("Login or Password incorrect"))
+                .assertThat().body("path",equalTo("/v1/user/login/usernamepassword"));
+    }
 
 }
