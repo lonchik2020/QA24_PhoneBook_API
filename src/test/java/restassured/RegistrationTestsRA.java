@@ -30,7 +30,7 @@ public class RegistrationTestsRA {
         String token = given()
                 .body(auth)
                 .contentType(ContentType.JSON)
-                .when()
+                .when()//which link + which method
                 .post(endpoint)
                 .then()
                 .assertThat().statusCode(200)

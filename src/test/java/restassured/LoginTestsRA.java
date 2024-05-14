@@ -80,8 +80,8 @@ public class LoginTestsRA {
                 .post(endpoint)
                 .then()
                 .assertThat().statusCode(401)
-                .assertThat().body("message",containsString("Login or Password incorrect"))
-              .assertThat().body("path",equalTo("/v1/user/login/usernamepassword"));
+                .assertThat().body("message",containsString("Login or Password incorrect"))//Matchers.contains
+              .assertThat().body("path",equalTo("/v1/user/login/usernamepassword"));//path of end point from swagger
     }
 
     @Test
